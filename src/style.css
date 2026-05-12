@@ -1,0 +1,142 @@
+@import "tailwindcss";
+
+@keyframes float {
+  0%, 100% { transform: translateY(0px) rotate(0deg); }
+  50% { transform: translateY(-20px) rotate(5deg); }
+}
+
+@keyframes twinkle {
+  0%, 100% { opacity: 1; transform: scale(1); }
+  50% { opacity: 0.3; transform: scale(0.7); }
+}
+
+@keyframes shake {
+  0%, 100% { transform: translateX(0); }
+  20% { transform: translateX(-10px); }
+  40% { transform: translateX(10px); }
+  60% { transform: translateX(-7px); }
+  80% { transform: translateX(7px); }
+}
+
+@keyframes bounce-in {
+  0% { transform: scale(0) rotate(-10deg); opacity: 0; }
+  60% { transform: scale(1.25) rotate(5deg); opacity: 1; }
+  100% { transform: scale(1) rotate(0deg); opacity: 1; }
+}
+
+@keyframes star-burst {
+  0% { transform: scale(0) rotate(0deg); opacity: 0; }
+  50% { transform: scale(1.4) rotate(180deg); opacity: 1; }
+  100% { transform: scale(1) rotate(360deg); opacity: 1; }
+}
+
+@keyframes fly-up {
+  0% { transform: translateY(0) scale(1); opacity: 1; }
+  100% { transform: translateY(-150px) scale(1.5); opacity: 0; }
+}
+
+@keyframes score-pop {
+  0% { transform: scale(1); }
+  40% { transform: scale(1.5); }
+  100% { transform: scale(1); }
+}
+
+@keyframes hint-glow {
+  0%, 100% { box-shadow: 0 0 0 0 rgba(250, 204, 21, 0); border-color: rgba(100, 160, 255, 0.3); }
+  50% { box-shadow: 0 0 0 6px rgba(250, 204, 21, 0.5); border-color: rgba(250, 204, 21, 0.9); }
+}
+
+@keyframes planet-spin {
+  from { transform: rotate(0deg); }
+  to { transform: rotate(360deg); }
+}
+
+@keyframes streak {
+  0% { opacity: 0; transform: translateX(-100px) scaleX(0); }
+  20% { opacity: 1; transform: translateX(0) scaleX(1); }
+  100% { opacity: 0; transform: translateX(200px) scaleX(0.5); }
+}
+
+.star-bg {
+  background: radial-gradient(ellipse at 50% 30%, #0d1b4d 0%, #070b2e 50%, #020307 100%);
+  min-height: 100dvh;
+}
+
+.keypad-btn {
+  position: relative;
+  overflow: hidden;
+  border-radius: 1rem;
+  font-weight: 700;
+  color: white;
+  transition: transform 0.1s, box-shadow 0.15s;
+  user-select: none;
+  cursor: pointer;
+  background: linear-gradient(160deg, #1e3a6e 0%, #0d1b3e 100%);
+  border: 1.5px solid rgba(100, 160, 255, 0.35);
+  box-shadow: 0 4px 15px rgba(0,0,0,0.6), inset 0 1px 0 rgba(255,255,255,0.12);
+  -webkit-tap-highlight-color: transparent;
+}
+
+.keypad-btn:active {
+  transform: scale(0.92);
+  box-shadow: 0 2px 8px rgba(0,0,0,0.6);
+}
+
+.keypad-btn.correct {
+  background: linear-gradient(160deg, #166534 0%, #052e16 100%) !important;
+  border-color: rgba(74, 222, 128, 0.7) !important;
+  box-shadow: 0 0 24px rgba(74, 222, 128, 0.6) !important;
+}
+
+.keypad-btn.wrong {
+  background: linear-gradient(160deg, #7f1d1d 0%, #3b0a0a 100%) !important;
+  border-color: rgba(248, 113, 113, 0.7) !important;
+  box-shadow: 0 0 24px rgba(248, 113, 113, 0.6) !important;
+}
+
+.keypad-btn.hint-highlight {
+  animation: hint-glow 1.2s ease-in-out infinite;
+}
+
+.question-card {
+  background: linear-gradient(160deg, rgba(30, 58, 138, 0.7) 0%, rgba(10, 15, 50, 0.85) 100%);
+  border: 1.5px solid rgba(100, 160, 255, 0.3);
+  box-shadow: 0 8px 32px rgba(0,0,0,0.6), inset 0 1px 0 rgba(255,255,255,0.08);
+  backdrop-filter: blur(8px);
+}
+
+.animate-float { animation: float 4s ease-in-out infinite; }
+.animate-twinkle { animation: twinkle ease-in-out infinite; }
+.animate-shake { animation: shake 0.5s ease-in-out; }
+.animate-bounce-in { animation: bounce-in 0.6s cubic-bezier(0.68,-0.55,0.265,1.55) forwards; }
+.animate-score-pop { animation: score-pop 0.4s ease-in-out; }
+
+.star-particle {
+  position: fixed;
+  pointer-events: none;
+  z-index: 9999;
+  animation: fly-up 1s forwards ease-out;
+  font-size: 1.8rem;
+}
+
+.progress-bar-fill {
+  background: linear-gradient(90deg, #fbbf24, #f59e0b, #fde68a);
+  box-shadow: 0 0 12px rgba(251, 191, 36, 0.6);
+  transition: width 0.5s ease;
+}
+
+.score-badge {
+  background: linear-gradient(135deg, rgba(251, 191, 36, 0.2), rgba(245, 158, 11, 0.1));
+  border: 1px solid rgba(251, 191, 36, 0.4);
+}
+
+.streak-badge {
+  background: linear-gradient(135deg, rgba(239, 68, 68, 0.2), rgba(220, 38, 38, 0.1));
+  border: 1px solid rgba(239, 68, 68, 0.4);
+}
+
+.planet-ring {
+  border: 3px solid rgba(251, 191, 36, 0.4);
+  border-radius: 50%;
+  animation: planet-spin 8s linear infinite;
+}
